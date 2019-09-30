@@ -26,7 +26,7 @@
 
         }
 
-        if ($_POST['input_last'] == '') {
+        if ($_POST['input_gebäudelast'] == '') {
             
             $errors[] = "Gebäudelast angeben!";
 
@@ -128,7 +128,7 @@
     <div>
         <span>Bei einer verfügbaren Hausanschluss mit </span>
         <input type="number" name="input_hausanschluss" value="<?= $_POST['input_hausanschluss'];?>"> kW und einer Gebäudelast von 
-        <input type="number" name="input_last" value="<?= $_POST['input_last'];?>"> kW verbleiben <?=  "____"; ?> kW Anschlussleistung für Ladeinfrastruktur.
+        <input type="number" name="input_gebäudelast" value="<?= $_POST['input_gebäudelast'];?>"> kW verbleiben <?=  "____"; ?> kW Anschlussleistung für Ladeinfrastruktur.
     </div>
 
     <div>
