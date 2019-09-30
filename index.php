@@ -2,19 +2,14 @@
 
     $errors = [];
 
-    $anschlussLeistungLIS;
+/*     $anschlussLeistungLIS;
     $anzahlStellplätze;
 
     $täglicheFahrleistung;
     $täglicherNachladebedarf;
 
     $täglicherNachladebedarfZeit;
-    $anzahlNachladungen;
-
-
-
-
-
+    $anzahlNachladungen; */
 
     // VALIDATION
     if ($_SERVER['REQUEST_METHOD'] == 'POST') {
@@ -86,6 +81,10 @@
 
         }
 
+        if($_POST['input_fahrzeugwechselzeit'] == '') {
+            $errors[] = "Zeit zum Fahrzeugwechsel angeben!";
+        } 
+
     }
 
 
@@ -93,13 +92,13 @@
     if ($_SERVER['REQUEST_METHOD'] == 'POST' && empty($errors)) {
         
         $anschlussLeistungLIS = $_POST['input_hausanschluss'] - $_POST['input_gebäudelast'];
-        $anzahlStellplätze = 1;
+        $anzahlStellplätze = $anschlussLeistungLIS *  $_POST['input_wirkleistungsfaktor'] * 1 / ($_POST['input_ladeleistung'] * 1 / ($_POST['input_gleichzeitigkeitsfaktor']));
 
-        $täglicheFahrleistung;
-        $täglicherNachladebedarf;
+        $täglicheFahrleistung = $_POST['input_jahresfahrleistung'] / $_POST['input_anzahltage'];
+        $täglicherNachladebedarf = $täglicheFahrleistung * $_POST['input_verbrauch'] / 100;
     
-        $täglicherNachladebedarfZeit;
-        $anzahlNachladungen;
+        $täglicherNachladebedarfZeit = ($täglicherNachladebedarf / $_POST['input_ladeleistungfahrzeug']) + $_POST['input_ladeverlustzeit'];
+        $anzahlNachladungen = $_POST['input_ladezeitraum'] / ($täglicherNachladebedarfZeit + $_POST['input_fahrzeugwechselzeit']);
 
     }
     
@@ -120,7 +119,6 @@
 ?>
 
 
-
 <form action="" method="post">
     
     <h2>Gebäude & Ladeinfrastruktur</h2>
@@ -128,7 +126,7 @@
     <div>
         <span>Bei einer verfügbaren Hausanschluss mit </span>
         <input type="number" name="input_hausanschluss" value="<?= $_POST['input_hausanschluss'];?>"> kW und einer Gebäudelast von 
-        <input type="number" name="input_gebäudelast" value="<?= $_POST['input_gebäudelast'];?>"> kW verbleiben <?=  "____"; ?> kW Anschlussleistung für Ladeinfrastruktur.
+        <input type="number" name="input_gebäudelast" value="<?= $_POST['input_gebäudelast'];?>"> kW verbleiben <?php echo isset($anschlussLeistungLIS) ? $anschlussLeistungLIS :  '___';  ?> kW Anschlussleistung für Ladeinfrastruktur.
     </div>
 
     <div>
@@ -136,7 +134,7 @@
         <input type="number" step="0.01" name="input_wirkleistungsfaktor" value="<?= $_POST['input_wirkleistungsfaktor'];?>"> und einem Gleichzeitigkeitsfaktor von 
         <input type="number" step="0.01" name="input_gleichzeitigkeitsfaktor" value="<?= $_POST['input_gleichzeitigkeitsfaktor'];?>">, können bei einer verfügbaren AC-Ladeleistung von 
         <input type="number" step="0.01" name="input_ladeleistung" value="<?= $_POST['input_ladeleistung'];?>"> kW,
-        <?= "____"; ?> Stellplätze versorgt werden.
+        <?php echo isset($anzahlStellplätze) ? round($anzahlStellplätze, 2, PHP_ROUND_HALF_DOWN) :  '___';  ?> Stellplätze versorgt werden.
     </div>
 
     <h2>Fahrzeug & Fahrverhalten</h2>
@@ -145,12 +143,12 @@
         <span>Bei einer jährlichen Fahrleistung von </span>
         <input type="number" name="input_jahresfahrleistung" value="<?= $_POST['input_jahresfahrleistung'];?>"> km, verteilt auf  
         <input type="number" name="input_anzahltage" value="<?= $_POST['input_anzahltage'];?>"> Tage (z.B. Werktage), ergibt sich eine tägliche Fahrleistung von 
-        <?= "____" ?> km.
+        <?php echo isset($täglicheFahrleistung) ? round($täglicheFahrleistung, 2, PHP_ROUND_HALF_DOWN) :  '___';  ?> km.
     </div>
     <div>
         <span>Unter Annahme eines Energieverbrauchs von </span>
         <input type="number" name="input_verbrauch" value="<?= $_POST['input_verbrauch'];?>"> kWh / 100 km, ergibt sich daraus ein täglicher Nachladebedarf von 
-        <?= "____" ?> kWh.
+        <?php echo isset($täglicherNachladebedarf) ? round($täglicherNachladebedarf, 2, PHP_ROUND_HALF_UP) :  '___';  ?>  kWh.
     </div>
 
     <h2>Ladezeit</h2>
@@ -158,11 +156,13 @@
         <span>Unter Anbetracht einer fahrzeugseitig, möglichen Ladeleistung von </span>
         <input type="number" step="0.01" name="input_ladeleistungfahrzeug" value="<?= $_POST['input_ladeleistungfahrzeug'];?>"> kW und einer Zusatzzeit für Ladeverluste von
         <input type="number" step="0.01" name="input_ladeverlustzeit" value="<?= $_POST['input_ladeverlustzeit'];?>"> h, erfolgt die Nachladung des täglichen Bedarfs eines Fahrzeugs in 
-        <?= "____" ?> h.
+        <?php echo isset($täglicherNachladebedarfZeit) ? round($täglicherNachladebedarfZeit, 2) :  '___';  ?> h.
     </div>
     <div>
         <span>Innerhalb eines verfügbaren Ladezeitraumes von</span>
-        <input type="number" step="0.01" name="input_ladezeitraum" value="<?= $_POST['input_ladezeitraum'];?>"> h, sind demnach <?= "____" ?> Nachladungen möglich.
+        <input type="number" step="0.01" name="input_ladezeitraum" value="<?= $_POST['input_ladezeitraum'];?>"> h, sind bei einer Zeit zum Fahrzeugwechsel 
+        <input type="number" step="0.01" name="input_fahrzeugwechselzeit" value="<?= $_POST['input_fahrzeugwechselzeit'];?>"> h,
+        demnach <?php echo isset($anzahlNachladungen) ? round($anzahlNachladungen, 2) :  '___';  ?> Nachladungen möglich.
     </div>
 
 
