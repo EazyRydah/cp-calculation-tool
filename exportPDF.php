@@ -76,9 +76,6 @@ function exportPDF() {
 
     ';
     
-    
-    
-
     //////////////////////////// Erzeugung eures PDF Dokuments \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
     
     // TCPDF Library laden
