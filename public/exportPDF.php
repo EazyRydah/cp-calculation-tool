@@ -39,8 +39,8 @@ function exportPDF() {
     <table cellpadding="2" cellspacing="0" style="width: 100%; margin-top:100px;">
         <br>
         <tr>
-            <td><span style="font-weight: bold">Datum der Beratung: </span> <span>'. $_POST['input_date'] .'</span></td>
-            <td><span style="font-weight: bold">Ort Beratung: </span> <span>'. $_POST['input_location'] .'</span></td>
+            <td><span style="font-weight: bold">Datum: </span> <span>'. $_POST['input_date'] .'</span></td>
+            <td><span style="font-weight: bold">Ort: </span> <span>'. $_POST['input_location'] .'</span></td>
         </tr>
         <br>
         <tr>
@@ -55,23 +55,22 @@ function exportPDF() {
 
     <h4>Gebäude & Ladeinfrastruktur</h4>
     <p>Bei einem verfügbaren Haussanschluss mit '. $_POST['input_hausanschluss'] .' kW und einer Gebäudelast von '. $_POST['input_gebäudelast'] .' kW verbleiben '. $_POST['anschlussLeistungLIS'] .' kW Anschlussleistung für Ladeinfrastruktur.
-        <br>Unter Annahme eines Wirkleistungsfaktors von '. $_POST['input_wirkleistungsfaktor'] .', können bei einer verfügbaren AC-Ladeleistung von '. $_POST['input_ladeleistung'] .' kW,  '. round($_POST['anzahlStellplätze'], 2) .' Stellplätze versorgt werden.</p>
+        <br>Unter Annahme eines Wirkleistungsfaktors von '. $_POST['input_wirkleistungsfaktor'] .', können bei einer verfügbaren AC-Ladeleistung von '. $_POST['input_ladeleistung'] .' kW,  '. floor($_POST['anzahlStellplätze']) .' Stellplätze versorgt werden.</p>
     
     <h4>Fahrzeug & Fahrverhalten</h4>
-    <p>Bei einer jährlichen Fahrleistung von '. $_POST['input_jahresfahrleistung'] .' km, verteilt auf '. $_POST['input_anzahltage'] .' Tage (z.B. Werktage), ergibt sich eine tägliche Fahrleistung von '. round($_POST['täglicheFahrleistung'],2) .' km. 
-    <br>Unter Annahme eines Energieverbrauchs von '. $_POST['input_verbrauch'] .' kWh/100km ergibt sich daraus ein täglicher Nachladebedarf von '. round($_POST['täglicherNachladebedarf'], 2) .' kWh.</p>
+    <p>Bei einer jährlichen Fahrleistung von '. $_POST['input_jahresfahrleistung'] .' km, verteilt auf '. $_POST['input_anzahltage'] .' Tage (z.B. Werktage), ergibt sich eine tägliche Fahrleistung von '. floor($_POST['täglicheFahrleistung']) .' km. 
+    <br>Unter Annahme eines Energieverbrauchs von '. $_POST['input_verbrauch'] .' kWh/100km ergibt sich daraus ein täglicher Nachladebedarf von '. round($_POST['täglicherNachladebedarf'], 1) .' kWh.</p>
 
     <h4>Ladezeit</h4>
-    <p>Unter Anbetracht einer fahrzeugseitig maximalen Ladeleistung von '. $_POST['input_ladeleistungfahrzeug'] .' kW und einer Zusatzzeit für Ladeverstlust von '. $_POST['input_ladeverlustzeit'] .' h, erfolgt die Nachladung des täglichen Bedarfs eines E-PKW in '. round($_POST['täglicherNachladebedarfZeit'],2) .' h.
-    <br>Innerhalb eines verfügbaren Zeitraumes von '. $_POST['input_ladezeitraum'] .' h, sind bei einer Zeit zum Fahrzeugwechsel '. $_POST['input_fahrzeugwechselzeit'] .' h demnach '. round($_POST['anzahlNachladungen'],2) .' Nachladungen möglich.</p>
+    <p>Unter Anbetracht einer fahrzeugseitig maximalen Ladeleistung von '. $_POST['input_ladeleistungfahrzeug'] .' kW und einer Zusatzzeit für Ladeverstlust von '. $_POST['input_ladeverlustzeit'] .' h, erfolgt die Nachladung des täglichen Bedarfs eines E-PKW in '. round($_POST['täglicherNachladebedarfZeit'], 2) .' h.
+    <br>Innerhalb eines verfügbaren Zeitraumes von '. $_POST['input_ladezeitraum'] .' h, sind bei einer Zeit zum Fahrzeugwechsel '. $_POST['input_fahrzeugwechselzeit'] .' h demnach '. floor($_POST['anzahlNachladungen']) .' Nachladungen möglich.</p>
   
     <h4>Ergebnis</h4>
     <p>Unter Annahme eines Nutzfaktors von '. $_POST['input_nutzungsfaktor'] .' (z.B. privat 0,7, gewerblich 0,9) können mit der verfürbaren LIS-Anschlussleistung unter Einsatz eines dynamischen Lastmanagements
-    '. round($_POST['anzahlStellplätzeLastmanagement'],2) .' Stellplätze parallel versorgt werden.</p>
-    <br><br>
-
-    <p><span style="font-weight: bold">Hinweis: </span> Alle Angaben beruhen auf statistisch ermittelten Durchschnittswerten und zur Orientierung.</p>
+    '. floor($_POST['anzahlStellplätzeLastmanagement']) .' Stellplätze parallel versorgt werden.</p>
+    <br>
    
+    <p><span style="font-weight: bold">Hinweis: </span> Alle Angaben beruhen auf statistisch ermittelten Durchschnittswerten und zur Orientierung.</p>
     <span style="font-weight: bold">Mit freundlichen Grüßen</span><br>Ihre Stadtwerke Göttingen
 
     ';
