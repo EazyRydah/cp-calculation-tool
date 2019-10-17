@@ -39,7 +39,7 @@ function exportPDF() {
     <table cellpadding="2" cellspacing="0" style="width: 100%; margin-top:100px;">
         <br>
         <tr>
-            <td><span style="font-weight: bold">Datum: </span> <span>'. $_POST['input_date'] .'</span></td>
+            <td><span style="font-weight: bold">Datum: </span> <span>'. $date .'</span></td>
             <td><span style="font-weight: bold">Ort: </span> <span>'. $_POST['input_location'] .'</span></td>
         </tr>
         <br>
