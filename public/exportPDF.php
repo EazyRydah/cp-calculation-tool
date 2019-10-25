@@ -69,7 +69,7 @@ function exportPDF() {
     <p>Unter Annahme eines Nutzfaktors von '. $_POST['input_nutzungsfaktor'] .' (z.B. privat 0,7, gewerblich 0,9) können mit der verfürbaren LIS-Anschlussleistung unter Einsatz eines dynamischen Lastmanagements
     '. floor($_POST['anzahlStellplätzeLastmanagement']) .' Stellplätze parallel versorgt werden.</p>
     <br>
-    <p><span style="font-weight: bold">Hinweis: </span> Alle Angaben beruhen auf erfahrungsbasierten Annahmen und dienen lediglich zur Orientierung bei der Auslesungn von Ladeinfrastruktur.</p>
+    <p><span style="font-weight: bold">Hinweis: </span> Alle Angaben beruhen auf erfahrungsbasierten Annahmen und dienen lediglich zur Orientierung bei der Auslegung von Ladeinfrastruktur.</p>
     <span style="font-weight: bold">Mit freundlichen Grüßen</span><br>Ihre Stadtwerke Göttingen';
     
     //////////////////////////// Erzeugung eures PDF Dokuments \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
