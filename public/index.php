@@ -134,10 +134,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && empty($errors)) {
 
 }
 
-
 ?>
-
-
 
 <!DOCTYPE html>
 <html lang="de">
@@ -152,7 +149,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && empty($errors)) {
 
 <div class="container">
 
-    <h1>SWG LIS Beratungstool</h1>
+    <h1>SWG LIS Kalkulator</h1>
 
     <?php 
 
@@ -171,20 +168,25 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && empty($errors)) {
         <div class="row">
 
             <div class="col-md-6">
+
             <div class="input-group mb-3">
-                <div class="input-group-prepend">
-                    <span class="input-group-text" id="date">Datum</span>
-                </div>
-                <input type="date" name="input_date" id="date" value="<?= $_POST['input_date']; ?>" class="form-control">
-                </div>
+            <div class="input-group-prepend">
+                <span class="input-group-text" id="date">Datum</span>
             </div>
+            <input type="date" name="input_date" id="date" value="<?= $_POST['input_date']; ?>" class="form-control">
+            </div>
+
+            </div>
+
             <div class="col-md-6">
-                <div class="input-group mb-3">
-                <div class="input-group-prepend">
-                    <span class="input-group-text" id="location">Ort</span>
-                </div>
-                <input type="text" name="input_location" id="location" value="<?php echo isset($_POST['input_location']) ?  $_POST['input_location'] :  '' ; ?>" class="form-control"> 
-                </div>
+
+            <div class="input-group mb-3">
+            <div class="input-group-prepend">
+                <span class="input-group-text" id="location">Ort</span>
+            </div>
+            <input type="text" name="input_location" id="location" value="<?php echo isset($_POST['input_location']) ?  $_POST['input_location'] :  '' ; ?>" class="form-control"> 
+            </div>
+
             </div>
         
         </div>
@@ -192,20 +194,25 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && empty($errors)) {
         <div class="row">
 
             <div class="col-md-6">
-                <div class="input-group mb-3">
-                <div class="input-group-prepend">
-                    <span class="input-group-text" id="date">Bezeichnung</span>
-                </div>
-                <input type="text" name="input_objectLabel" id="objectLabel" value="<?= $_POST['input_objectLabel']; ?>" class="form-control">
-                </div>
+
+            <div class="input-group mb-3">
+            <div class="input-group-prepend">
+                <span class="input-group-text" id="date">Bezeichnung</span>
             </div>
+            <input type="text" name="input_objectLabel" id="objectLabel" value="<?php echo isset($_POST['input_objectLabel']) ?  $_POST['input_objectLabel'] :  '' ; ?>" class="form-control">
+            </div>
+
+            </div>
+
             <div class="col-md-6">
-                <div class="input-group mb-3">
-                    <div class="input-group-prepend">
-                        <span class="input-group-text" id="location">Standort</span>
-                    </div>
-                    <input type="text" name="input_objectLocation" id="objectLocation" value="<?php echo isset($_POST['input_objectLocation']) ?  $_POST['input_objectLocation'] :  '' ; ?>" class="form-control"> 
+
+            <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                    <span class="input-group-text" id="location">Standort</span>
                 </div>
+                <input type="text" name="input_objectLocation" id="objectLocation" value="<?php echo isset($_POST['input_objectLocation']) ?  $_POST['input_objectLocation'] :  '' ; ?>" class="form-control"> 
+            </div>
+
             </div>
 
         </div>
@@ -217,25 +224,29 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && empty($errors)) {
         <div class="row">
 
             <div class="col-md-6">
-                <div class="input-group mb-3">
-                <div class="input-group-prepend">
-                    <span class="input-group-text" id="input_hausanschluss">Hausanschluss in kW</span>
-                </div>
-                <input type="number" name="input_hausanschluss" id="input_hausanschluss" value="<?= $_POST['input_hausanschluss']; ?>" class="form-control">
-                </div>
+
+            <div class="input-group mb-3">
+            <div class="input-group-prepend">
+                <span class="input-group-text" id="input_hausanschluss">Hausanschluss in kW</span>
+            </div>
+            <input type="number" name="input_hausanschluss" id="input_hausanschluss" value="<?= $_POST['input_hausanschluss']; ?>" class="form-control">
+            </div>
+
             </div>
 
             <div class="col-md-6">
-                <div class="input-group mb-3">
-                <div class="input-group-prepend">
-                    <span class="input-group-text" id="input_gebäudelast">Gebäudelast in kW</span>
-                </div>
-                <input type="number" name="input_gebäudelast" id="input_gebäudelast" value="<?= $_POST['input_gebäudelast']; ?>" class="form-control">
-                </div>
+
+            <div class="input-group mb-3">
+            <div class="input-group-prepend">
+                <span class="input-group-text" id="input_gebäudelast">Gebäudelast in kW</span>
+            </div>
+            <input type="number" name="input_gebäudelast" id="input_gebäudelast" value="<?= $_POST['input_gebäudelast']; ?>" class="form-control">
+            </div>
+
             </div>
 
             <div class="col">
-            Ergibt: <?php echo isset($anschlussLeistungLIS) ? "<strong>". $anschlussLeistungLIS . "</strong>" :  '___';  ?> kW Anschlussleistung für Ladeinfrastruktur.
+            Ergibt: <?php echo isset($anschlussLeistungLIS) ? "<strong>". $anschlussLeistungLIS . "</strong>" :  '___';  ?> kW verbleibende Anschlussleistung für Ladeinfrastruktur.
             </div>
 
         </div>
@@ -243,25 +254,29 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && empty($errors)) {
         <div class="row">
 
             <div class="col-md-6">
-                <div class="input-group my-3">
-                    <div class="input-group-prepend">
-                        <span class="input-group-text" id="input_wirkleistungsfaktor">Wirkleistungsfaktor</span>
-                    </div>
-                    <input type="number" step="0.01" name="input_wirkleistungsfaktor" id="input_wirkleistungsfaktor" value="<?= $_POST['input_wirkleistungsfaktor']; ?>" class="form-control">
+
+            <div class="input-group my-3">
+                <div class="input-group-prepend">
+                    <span class="input-group-text" id="input_wirkleistungsfaktor">Wirkleistungsfaktor</span>
                 </div>
+                <input type="number" step="0.01" name="input_wirkleistungsfaktor" id="input_wirkleistungsfaktor" value="<?= $_POST['input_wirkleistungsfaktor']; ?>" class="form-control">
+            </div>
+
             </div>
 
             <div class="col-md-6">
-                <div class="input-group my-3">
-                    <div class="input-group-prepend">
-                        <span class="input-group-text" id="input_ladeleistung">AC-Ladeleistung in kW</span>
-                    </div>
-                    <input type="number" name="input_ladeleistung" id="input_ladeleistung" value="<?= $_POST['input_ladeleistung']; ?>" class="form-control">
+
+            <div class="input-group my-3">
+                <div class="input-group-prepend">
+                    <span class="input-group-text" id="input_ladeleistung">AC-Ladeleistung in kW</span>
                 </div>
+                <input type="number" name="input_ladeleistung" id="input_ladeleistung" value="<?= $_POST['input_ladeleistung']; ?>" class="form-control">
+            </div>
+
             </div>
 
             <div class="col">
-            Ergibt: <?php echo isset($anzahlStellplätze) ? "<strong>". round($anzahlStellplätze, 2, PHP_ROUND_HALF_DOWN) . "</strong>" :  '___';  ?> Stellplätze.
+            Ergibt: <?php echo isset($anzahlStellplätze) ? "<strong>". round($anzahlStellplätze, 2, PHP_ROUND_HALF_DOWN) . "</strong>" :  '___';  ?> Stellplätze mit statischem Lastmanagement.
             </div>
 
         </div>
@@ -269,53 +284,153 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && empty($errors)) {
         <br>
 
         <h2>Fahrzeug & Fahrverhalten</h2>
-        <h1 style="color: red;">TOODOOOO</h1>
-        <div>
-            <span>Bei einer jährlichen Fahrleistung von </span>
-            <input type="number" name="input_jahresfahrleistung" value="<?= $_POST['input_jahresfahrleistung'];?>"> km, verteilt auf  
-            <input type="number" name="input_anzahltage" value="<?= $_POST['input_anzahltage'];?>"> Tage (z.B. Werktage), ergibt sich eine tägliche Fahrleistung von 
-            <?php echo isset($täglicheFahrleistung) ? "<strong>". round($täglicheFahrleistung, 2, PHP_ROUND_HALF_DOWN) . "</strong>"  :  '___';  ?> km.
+        
+        <div class="row">
+
+            <div class="col-md-6">
+
+            <div class="input-group my-3">
+                <div class="input-group-prepend">
+                    <span class="input-group-text" id="input_jahresfahrleistung">Jährliche Fahrleistung in km</span>
+                </div>
+                <input type="number" step="0.01" name="input_jahresfahrleistung" id="input_jahresfahrleistung" value="<?= $_POST['input_jahresfahrleistung']; ?>" class="form-control">
+            </div>
+
+            </div>
+
+            <div class="col-md-6">
+
+            <div class="input-group my-3">
+                <div class="input-group-prepend">
+                    <span class="input-group-text" id="input_anzahltage">verteilt auf Tage (z.B. Werktage)</span>
+                </div>
+                <input type="number" name="input_anzahltage" id="input_anzahltage" value="<?= $_POST['input_anzahltage']; ?>" class="form-control">
+            </div>
+
+            </div>
+
+            <div class="col">
+            Ergibt: <?php echo isset($täglicheFahrleistung) ? "<strong>". round($täglicheFahrleistung, 2, PHP_ROUND_HALF_DOWN) . "</strong>" :  '___';  ?> tägliche Fahrleistung in km.
+            </div>
+
         </div>
 
         <br>
 
-        <div>
-            <span>Unter Annahme eines Energieverbrauchs von </span>
-            <input type="number" name="input_verbrauch" value="<?= $_POST['input_verbrauch'];?>"> kWh / 100 km, ergibt sich daraus ein täglicher Nachladebedarf von 
-            <?php echo isset($täglicherNachladebedarf) ? "<strong>". round($täglicherNachladebedarf, 2, PHP_ROUND_HALF_UP) . "</strong>" :  '___';  ?>  kWh.
+        <div class="row">
+
+            <div class="col-md-6">
+
+            <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                    <span class="input-group-text" id="input_verbrauch">Energieverbrauch in kWh/100km</span>
+                </div>
+                <input type="number" step="0.01" name="input_verbrauch" id="input_verbrauch" value="<?= $_POST['input_verbrauch']; ?>" class="form-control">
+            </div>
+
+            </div>
+
+            <div class="col-md-6"></div>
+
+            <div class="col">
+            Ergibt: <?php echo isset($täglicherNachladebedarf) ? "<strong>". round($täglicherNachladebedarf, 2, PHP_ROUND_HALF_DOWN) . "</strong>" :  '___';  ?> kW täglichen Nachladebedarf.
+            </div>
+
         </div>
+
+        <br>
 
         <h2>Ladezeit</h2>
 
-        <div>
-            <span>Unter Anbetracht einer fahrzeugseitig, möglichen Ladeleistung von </span>
-            <input type="number" step="0.01" name="input_ladeleistungfahrzeug" value="<?= $_POST['input_ladeleistungfahrzeug'];?>"> kW und einer Zusatzzeit für Ladeverluste von
-            <input type="number" step="0.01" name="input_ladeverlustzeit" value="<?= $_POST['input_ladeverlustzeit'];?>"> h, erfolgt die Nachladung des täglichen Bedarfs eines Fahrzeugs in 
-            <?php echo isset($täglicherNachladebedarfZeit) ? "<strong>". round($täglicherNachladebedarfZeit, 2) . "</strong>" :  '___';  ?> h.
+        <div class="row">
+
+            <div class="col-md-6">
+
+            <div class="input-group my-3">
+                <div class="input-group-prepend">
+                    <span class="input-group-text" id="input_ladeleistungfahrzeug">Fahrzeugseitige Ladeleistung in kW</span>
+                </div>
+                <input type="number" step="0.01" name="input_ladeleistungfahrzeug" id="input_ladeleistungfahrzeug" value="<?= $_POST['input_ladeleistungfahrzeug']; ?>" class="form-control">
+            </div>
+
+            </div>
+
+            <div class="col-md-6">
+
+            <div class="input-group my-3">
+                <div class="input-group-prepend">
+                    <span class="input-group-text" id="input_ladeverlustzeit">Zusatzzeit für Ladeverluste in h</span>
+                </div>
+                <input type="number" step="0.01" name="input_ladeverlustzeit" id="input_ladeverlustzeit" value="<?= $_POST['input_ladeverlustzeit']; ?>" class="form-control">
+            </div>
+
+            </div>
+
+            <div class="col">
+            Ergibt: <?php echo isset($täglicherNachladebedarfZeit) ? "<strong>". round($täglicherNachladebedarfZeit, 2, PHP_ROUND_HALF_DOWN) . "</strong>" :  '___';  ?> h zur Nachladung des täglichen Bedarfs.
+            </div>
+
         </div>
 
         <br>
 
-        <div>
-            <span>Innerhalb eines verfügbaren Ladezeitraumes von</span>
-            <input type="number" step="0.01" name="input_ladezeitraum" value="<?= $_POST['input_ladezeitraum'];?>"> h, sind bei einer Zeit zum Fahrzeugwechsel 
-            <input type="number" step="0.01" name="input_fahrzeugwechselzeit" value="<?= $_POST['input_fahrzeugwechselzeit'];?>"> h,
-            demnach <?php echo isset($anzahlNachladungen) ? "<strong>".  round($anzahlNachladungen, 2) . "</strong>" :  '___';  ?> Nachladungen möglich.
+        <div class="row">
+
+        <div class="col-md-6">
+
+        <div class="input-group my-3">
+            <div class="input-group-prepend">
+                <span class="input-group-text" id="input_ladezeitraum">Verfügbarer Ladezeitraum in h</span>
+            </div>
+            <input type="number" step="0.01" name="input_ladezeitraum" id="input_ladezeitraum" value="<?= $_POST['input_ladezeitraum']; ?>" class="form-control">
         </div>
 
+        </div>
+
+        <div class="col-md-6">
+
+        <div class="input-group my-3">
+            <div class="input-group-prepend">
+                <span class="input-group-text" id="input_fahrzeugwechselzeit">Zeit zum Fahrzeugwechsel in h</span>
+            </div>
+            <input type="number" step="0.01" name="input_fahrzeugwechselzeit" id="input_fahrzeugwechselzeit" value="<?= $_POST['input_fahrzeugwechselzeit']; ?>" class="form-control">
+        </div>
+
+        </div>
+
+        <div class="col">
+        Ergibt: <?php echo isset($anzahlNachladungen) ? "<strong>". round($anzahlNachladungen, 2, PHP_ROUND_HALF_DOWN) . "</strong>" :  '___';  ?> mögliche Nachladungen.
+        </div>
+
+        </div>
+        <br>
         <h2>Ergebnis</h2>
+      
+        <div class="row">
 
-        <div>
-        <span>Unter Annahme eines Nutzungsfaktors von
-        <input type="number" step="0.01" name="input_nutzungsfaktor" value="<?= $_POST['input_nutzungsfaktor'];?>"> (z.B. privat 0.6, gewerblich 0.9)
-        können mit der verfügbaren LIS-Anschlussleistung können unter Einsatz eines dynamischen Lastmanagements 
-        <?php echo isset($anzahlStellplätzeLastmanagement) ?  "<strong>". round($anzahlStellplätzeLastmanagement, 2) . "</strong>" :  '___';  ?> Stellplätze parallel versorgt werden.</span>
+            <div class="col-md-6">
+        
+            <div class="input-group my-3">
+                <div class="input-group-prepend">
+                    <span class="input-group-text" id="input_nutzungsfaktor">Nutzungsfaktor (z.B. 0.6 privat)</span>
+                </div>
+                <input type="number" step="0.01" name="input_nutzungsfaktor" id="input_nutzungsfaktor" value="<?= $_POST['input_nutzungsfaktor']; ?>" class="form-control">
+            </div>
+
+            </div>
+
+            <div class="col-md-6"></div>
+
+            <div class="col">
+            Ergibt: <?php echo isset($anzahlStellplätzeLastmanagement) ? "<strong>". round($anzahlStellplätzeLastmanagement, 2, PHP_ROUND_HALF_DOWN) . "</strong>" :  '___';  ?> Stellplätze bei dynamischen Lastmanagement.
+            </div>
+
         </div>
 
-        <div>
-            <button type="submit">Berechnen</button>
-        </div>
-
+        <br>
+     
+        <button type="submit" class="btn btn-primary">Berechnen</button>
+     
     </form>
 
 <!-- PDF Export -->
@@ -360,8 +475,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && empty($errors)) {
         <!-- Ergebnis -->
         <input type="hidden" name="input_nutzungsfaktor" value="<?= $_POST['input_nutzungsfaktor'] ;?>">
         <input type="hidden" name="anzahlStellplätzeLastmanagement" value="<?= $anzahlStellplätzeLastmanagement ;?>">
-
-        <button type="submit">PDF Export</button>
+        <br>
+        
+        <button type="submit" class="btn btn-warning">PDF Export</button>
 
         </div>
     </form>
